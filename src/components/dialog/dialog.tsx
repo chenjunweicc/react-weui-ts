@@ -1,7 +1,7 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import classNames from '../../utils/classnames';
-import Mask from '../mask/index';
+import * as React from "react";
+import PropTypes from "prop-types";
+import classNames from "../../utils/classnames";
+import Mask from "../mask/index";
 
 /**
  * Modals provide feedback to user
@@ -11,12 +11,13 @@ interface Button {
     label: string;
     type?: string;
     onClick?: () => void;
+    style?: any;
 }
 interface DialogProps {
-    buttons: Array<Button>;
+    buttons: Button[];
     show?: boolean;
     title?: string;
-    type?: 'ios' | 'android';
+    type?: "ios" | "android";
     className?: any;
     autoDectect?: boolean;
     children?: React.ReactNode;
@@ -46,19 +47,19 @@ class Dialog extends React.Component<DialogProps> {
     };
 
     static defaultProps = {
-        buttons: [] as DialogProps['buttons'],
-        show: false as DialogProps['show'],
-        title: '' as DialogProps['title'],
-        type: '' as DialogProps['type'],
+        buttons: [] as DialogProps["buttons"],
+        show: false as DialogProps["show"],
+        title: "" as DialogProps["title"],
+        type: "" as DialogProps["type"],
     };
 
     renderButtons() {
         return this.props.buttons.map((action, idx) => {
             const { type, label, ...others } = action;
             const className = classNames({
-                'weui-dialog__btn': true,
-                'weui-dialog__btn_default': type === 'default',
-                'weui-dialog__btn_primary': type === 'primary',
+                "weui-dialog__btn": true,
+                "weui-dialog__btn_default": type === "default",
+                "weui-dialog__btn_primary": type === "primary",
             });
 
             return (
@@ -80,14 +81,14 @@ class Dialog extends React.Component<DialogProps> {
             autoDectect,
             ...others
         } = this.props;
-        const styleType = type || 'ios';
-        const cls = classNames('weui-dialog', {
-            'weui-skin_android': styleType === 'android',
+        const styleType = type || "ios";
+        const cls = classNames("weui-dialog", {
+            "weui-skin_android": styleType === "android",
             [className]: className,
         });
 
         return (
-            <div style={{ display: show ? 'block' : 'none' }}>
+            <div style={{ display: show ? "block" : "none" }}>
                 <Mask />
                 <div className={cls} {...others}>
                     {title ? (

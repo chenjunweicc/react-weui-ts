@@ -8,6 +8,7 @@ interface Button {
     label: string;
     type?: string;
     onClick?: () => void;
+    style?: any;
 }
 interface DialogProps {
     buttons: Array<Button>;
