@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 interface Button {
     label: string;
     type?: string;
+    onClick?: () => void;
 }
 interface DialogProps {
     buttons: Array<Button>;
